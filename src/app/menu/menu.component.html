@@ -11,6 +11,9 @@
         <li class="nav-item" *ngIf="isLogged">
           <a class="nav-link" routerLink="/lista"><i class="far fa-list-alt"></i> Lista</a>
         </li>
+        <li class="nav-item" *ngIf="isLogged">
+          <a class="nav-link" routerLink="/calcular"><i class="fa fa-shopping-basket"></i> Calcular</a>
+        </li>
         <li class="nav-item" *ngIf="!isLogged">
             <a class="nav-link"  routerLink="/login"><i class="fas fa-sign-in-alt"></i> Iniciar Sesión</a>
           </li>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Producto } from '../models/producto';
+import { Exchange } from '../models/producto';
 import { ProductoService } from '../service/producto.service';
 import { ToastrService } from 'ngx-toastr';
 import { TokenService } from '../service/token.service';
@@ -11,7 +11,7 @@ import { TokenService } from '../service/token.service';
 })
 export class ListaProductoComponent implements OnInit {
 
-  productos: Producto[] = [];
+  exchanges: Exchange[] = [];
   roles: string[];
   isAdmin = false;
 
@@ -34,26 +34,10 @@ export class ListaProductoComponent implements OnInit {
   cargarProductos(): void {
     this.productoService.lista().subscribe(
       data => {
-        this.productos = data;
+        this.exchanges = data;
       },
       err => {
         console.log(err);
-      }
-    );
-  }
-
-  borrar(id: number) {
-    this.productoService.delete(id).subscribe(
-      data => {
-        this.toastr.success('Producto Eliminado', 'OK', {
-          timeOut: 3000, positionClass: 'toast-top-center'
-        });
-        this.cargarProductos();
-      },
-      err => {
-        this.toastr.error(err.error.mensaje, 'Fail', {
-          timeOut: 3000, positionClass: 'toast-top-center',
-        });
       }
     );
   }

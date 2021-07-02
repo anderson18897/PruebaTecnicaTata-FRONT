@@ -3,10 +3,9 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ListaProductoComponent } from './producto/lista-producto.component';
-import { DetalleProductoComponent } from './producto/detalle-producto.component';
-import { NuevoProductoComponent } from './producto/nuevo-producto.component';
-import { EditarProductoComponent } from './producto/editar-producto.component';
+import { ListaProductoComponent } from './exchange/lista-producto.component';
+import { NuevoProductoComponent } from './exchange/nuevo-producto.component';
+import { EditarProductoComponent } from './exchange/editar-producto.component';
 import { interceptorProvider } from './interceptors/prod-interceptor.service';
 
 import { HttpClientModule } from '@angular/common/http';
@@ -19,6 +18,7 @@ import { LoginComponent } from './auth/login.component';
 import { RegistroComponent } from './auth/registro.component';
 import { MenuComponent } from './menu/menu.component';
 import { IndexComponent } from './index/index.component';
+import { CalcularComponent } from './exchange/calcular.component';
 
 
 
@@ -26,13 +26,13 @@ import { IndexComponent } from './index/index.component';
   declarations: [
     AppComponent,
     ListaProductoComponent,
-    DetalleProductoComponent,
     NuevoProductoComponent,
     EditarProductoComponent,
     LoginComponent,
     RegistroComponent,
     MenuComponent,
-    IndexComponent
+    IndexComponent,
+    CalcularComponent
   ],
   imports: [
     BrowserModule,

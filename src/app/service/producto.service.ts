@@ -1,38 +1,37 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Producto } from '../models/producto';
+import { Exchange } from '../models/producto';
+import { ExchangeRequest } from '../models/ExchangeRequest';
+import { ExchangeResponse } from '../models/ExchangeResponse';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductoService {
 
-  productoURL = 'http://localhost:8080/producto/';
+  productoURL = 'http://localhost:8095/';
 
   constructor(private httpClient: HttpClient) { }
 
-  public lista(): Observable<Producto[]> {
-    return this.httpClient.get<Producto[]>(this.productoURL + 'lista');
+  public lista(): Observable<Exchange[]> {
+    return this.httpClient.get<Exchange[]>(this.productoURL + 'show');
   }
 
-  public detail(id: number): Observable<Producto> {
-    return this.httpClient.get<Producto>(this.productoURL + `detail/${id}`);
+  public detail(id: number): Observable<Exchange> {
+    return this.httpClient.get<Exchange>(this.productoURL + `detail/${id}`);
   }
 
-  public detailName(nombre: string): Observable<Producto> {
-    return this.httpClient.get<Producto>(this.productoURL + `detailname/${nombre}`);
+  public save(exchange: Exchange): Observable<any> {
+    return this.httpClient.post<any>(this.productoURL + 'create-exchange', exchange);
   }
 
-  public save(producto: Producto): Observable<any> {
-    return this.httpClient.post<any>(this.productoURL + 'create', producto);
+  public update(id: number, exchange: Exchange): Observable<any> {
+    return this.httpClient.post<any>(this.productoURL + `update-exchange/${id}`, exchange);
   }
 
-  public update(id: number, producto: Producto): Observable<any> {
-    return this.httpClient.put<any>(this.productoURL + `update/${id}`, producto);
+  public calculate(exchangeRequest: ExchangeRequest): Observable<any> {
+    return this.httpClient.post<ExchangeResponse>(this.productoURL + 'exchange', exchangeRequest);
   }
 
-  public delete(id: number): Observable<any> {
-    return this.httpClient.delete<any>(this.productoURL + `delete/${id}`);
-  }
 }

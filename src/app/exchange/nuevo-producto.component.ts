@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductoService } from '../service/producto.service';
-import { Producto } from '../models/producto';
+import { Exchange } from '../models/producto';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 
@@ -11,8 +11,8 @@ import { Router } from '@angular/router';
 })
 export class NuevoProductoComponent implements OnInit {
 
-  nombre = '';
-  precio: number = null;
+  description = '';
+  value: number = null;
 
   constructor(
     private productoService: ProductoService,
@@ -24,7 +24,7 @@ export class NuevoProductoComponent implements OnInit {
   }
 
   onCreate(): void {
-    const producto = new Producto(this.nombre, this.precio);
+    const producto = new Exchange(this.description, this.value);
     this.productoService.save(producto).subscribe(
       data => {
         this.toastr.success('Producto Creado', 'OK', {
@@ -37,6 +37,7 @@ export class NuevoProductoComponent implements OnInit {
           timeOut: 3000,  positionClass: 'toast-top-center',
         });
         // this.router.navigate(['/']);
+        console.log(err);
       }
     );
   }

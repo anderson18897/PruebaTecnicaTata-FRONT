@@ -1,0 +1,28 @@
+<app-menu></app-menu>
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-4 mx-auto">
+            <form (ngSubmit)="onCalculate()" novalidate #f="ngForm">
+                <div class="form-group">
+                    <label for="mount">Monto</label>
+                    <input type="number" class="form-control" id="mount" name="mount"
+                    [(ngModel)]="mount" required>
+                </div>
+                <div class="form-group">
+                    <label for="currency_origin">Moneda de Origen</label>
+                    <input type="text" class="form-control" id="currency_origin" name="currency_origin"
+                    [(ngModel)]="currency_origin" required>
+                </div>
+                <div class="form-group">
+                    <label for="currency_destiny">Moneda de Destino</label>
+                    <input type="text" class="form-control" id="currency_destiny" name="currency_destiny"
+                    [(ngModel)]="currency_destiny" required>
+                </div>
+                <button class="btn btn-outline-success btn-block" [disabled]="!f.valid">
+                    <i class="fas fa-plus-circle"></i> Calcular</button>
+                <button class="btn btn-outline-primary btn-block" routerLink="/">
+                    <i class="fas fa-arrow-alt-circle-left"></i> Volver</button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,11 +1,11 @@
-export class Producto {
+export class Exchange {
     id?: number;
-    nombre: string;
-    precio: number;
+    description: string;
+    value: number;
 
-    constructor(nombre: string, precio: number) {
-        this.nombre = nombre;
-        this.precio = precio;
+    constructor(description: string, value: number) {
+        this.description = description;
+        this.value = value;
     }
 }
 
